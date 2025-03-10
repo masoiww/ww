@@ -521,20 +521,20 @@ const connectSocket = () => {
           addChatMsg(`🐾 JW marker not found`);
         }
 
-        // Find the target player by matching the grid index (gridIdx + 1)
-        const targetElement = $(`#${targetPlayer.id}`);
-        if (targetElement.length) {
-          targetElement.click();
-          addChatMsg(`🐾 Clicked on element with id: ${targetPlayer.id}`);
-        } else {
-          addChatMsg(`🐾 Element with id "${targetPlayer.id}" not found`);
+        // // Find the target player by matching the grid index (gridIdx + 1)
+        // const targetElement = $(`#${targetPlayer.id}`);
+        // if (targetElement.length) {
+        //   targetElement.click();
+        //   addChatMsg(`🐾 Clicked on element with id: ${targetPlayer.id}`);
+        // } else {
+        //   addChatMsg(`🐾 Element with id "${targetPlayer.id}" not found`);
         
         // Find the target player by matching the grid index (gridIdx + 1)
-        // const targetPlayer = PLAYERS.find((v) => v.gridIdx + 1 === gridIdx)
-        // if (targetPlayer) {
-        //   JW_TARGET = targetPlayer.id
-        //   addChatMsg(`🐾 Select ${targetPlayer.gridIdx + 1}. ${targetPlayer.username}`)
-        //   SOCKET.emit('game-werewolves-vote-set', JSON.stringify({ targetPlayerId: targetPlayer.id }))
+        const targetPlayer = PLAYERS.find((v) => v.gridIdx + 1 === gridIdx)
+        if (targetPlayer) {
+          JW_TARGET = targetPlayer.id
+          addChatMsg(`🐾 Select ${targetPlayer.gridIdx + 1}. ${targetPlayer.username}`)
+          SOCKET.emit('game-werewolves-vote-set', JSON.stringify({ targetPlayerId: targetPlayer.id }))
           // SOCKET.emit('game-junior-werewolf-selected-player', JSON.stringify({ targetPlayerId: targetPlayer.id }))
         }
       }
