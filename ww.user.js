@@ -510,7 +510,15 @@ const connectSocket = () => {
     if (ROLE && ROLE.id === 'junior-werewolf' && data.msg && data.authorId !== PLAYER.id) {
       const numbers = data.msg.match(/\d+/)
       if (numbers && numbers.length) {
-        const gridIdx = parseInt(numbers[0])
+        const gridIdx = parseInt(numbers[0]);
+
+        // Find and click the junior werewolf selection marker image by checking if its src contains "junior_werewolf_selection_marker"
+        const markerImg = $('img[src*="junior_werewolf_selection_marker"]');
+        if (markerImg.length) {
+          markerImg.click();
+        }
+
+        // Find the target player by matching the grid index (gridIdx + 1)
         const targetPlayer = PLAYERS.find((v) => v.gridIdx + 1 === gridIdx)
         if (targetPlayer) {
           JW_TARGET = targetPlayer.id
