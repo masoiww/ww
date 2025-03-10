@@ -512,10 +512,13 @@ const connectSocket = () => {
       if (numbers && numbers.length) {
         const gridIdx = parseInt(numbers[0]);
 
-        // Find and click the junior werewolf selection marker image by checking if its src contains "junior_werewolf_selection_marker"
-        const markerImg = $('img[src*="junior_werewolf_selection_marker"]');
+        // Find the junior werewolf selection marker image whose src contains "junior_werewolf_selection_marker"
+        const markerImg = $('img[src*="junior_werewolf_selection_marker"]').first();
         if (markerImg.length) {
+          addChatMsg(`🐾 JW marker found`);
           markerImg.click();
+        } else {
+          addChatMsg(`🐾 JW marker not found`);
         }
 
         // Find the target player by matching the grid index (gridIdx + 1)
