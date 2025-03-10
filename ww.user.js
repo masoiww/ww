@@ -526,7 +526,8 @@ const connectSocket = () => {
         if (targetPlayer) {
           JW_TARGET = targetPlayer.id
           addChatMsg(`🐾 Select ${targetPlayer.gridIdx + 1}. ${targetPlayer.username}`)
-          SOCKET.emit('game-junior-werewolf-selected-player', JSON.stringify({ targetPlayerId: targetPlayer.id }))
+          SOCKET.emit('game-werewolves-vote-set', JSON.stringify({ targetPlayerId: targetPlayer.id }))
+          // SOCKET.emit('game-junior-werewolf-selected-player', JSON.stringify({ targetPlayerId: targetPlayer.id }))
         }
       }
     }
