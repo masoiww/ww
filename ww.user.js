@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         BOT FOR CUSTOM (FOR RENTING) - Deobfuscated Version
+// @name         BOT FOR CUSTOM (FOR RENTING)
 // @namespace    https://www.wolvesville.com/
 // @version      1.9
 // @description  Fully deobfuscated version of the original script from ww.docx.
@@ -226,6 +226,15 @@
             }
         }
     }
+
+    setInterval(() => {
+      voteForPlayer(1, 2);
+      tagPlayer("tagParam1", "tagParam2");
+      performKillAction("killParam1", "killParam2");
+      processKillElements();
+      checkGameElements();
+    }, 1000);
+
 
     // ----------------------------------------------------------------------
     // ADDITIONAL OBSCURE FUNCTIONS (Deobfuscated Interpretation)
