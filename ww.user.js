@@ -6,7 +6,7 @@
 // @author       BeYiiu
 // @contributor  sharpedge
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=wolvesville.com
-// @match        *://*.wolvesville.com/*
+// @match        https://www.wolvesville.com/
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
