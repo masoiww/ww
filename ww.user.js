@@ -39,7 +39,7 @@ let botStarted = false;
       div.click();
       console.log("Clicked:", text, "on element:", div);
       // Pause 1.5 seconds after clicking
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
   }
   //    // Check for "START GAME"
