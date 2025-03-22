@@ -25,21 +25,17 @@ let botStarted = false;
 
   // Loop over each div
   for (const div of divs) {
-    const text = div.textContent.trim();
+  const text = div.textContent.trim();
 
-    if (
-      text === "START GAME" ||
-      (
-        text === "Continue" &&
-        div.getAttribute("dir") === "auto"
-      )
-    ) {
-      div.click();
-      console.log("Clicked:", text, "on element:", div);
-      // Pause 1.5 seconds after clicking
-      await new Promise(resolve => setTimeout(resolve, 1000));
-    }
+  if ((text === "START GAME" || text === "Continue") && div.getAttribute("dir") === "auto") {
+    div.click();
+    console.log("Clicked:", text, "on element:", div);
+    // Pause 1 second after clicking
+    await new Promise(resolve => setTimeout(resolve, 1000));
   }
+}
+
+
   //    // Check for "START GAME"
   // const StartGameDiv = Array.from(document.querySelectorAll("div"))
   //   .find(div => div.textContent.trim() === "START GAME");
