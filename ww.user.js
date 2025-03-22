@@ -12,34 +12,12 @@
 // ==/UserScript==
 
 let botStarted = false;
+function printHello(){
+  console.log("Hello");
+}
 
-(async function autoPlay() {
-  // Alert only once when the script first runs
-  if (!botStarted) {
-    alert("Bot is running");
-    botStarted = true;
-  }
-  // Find all div elements on the page
-const divs = document.querySelectorAll("div");
 
-// Loop through each div to check its text content
-divs.forEach(div => {
-  if (div.textContent.trim() === "START GAME") {
-    div.click();
-  } else if (div.textContent.trim() === "Continue") {
-    div.click();
-  } else if (div.textContent.trim() === "Play again") {
-    div.click();
-  } else if (div.textContent.trim() === "OK") {
-    div.click();
-  } else if (div.textContent.trim() === "PLAY") {
-    div.click();
-  }
-});
-  
-  }
+// Run the function again after 1 second to continuously check the page
+setTimeout(printHello, 1000);
 
-  // Run the function again after 1 second to continuously check the page
-  setTimeout(autoPlay, 1000);
-})();
 
