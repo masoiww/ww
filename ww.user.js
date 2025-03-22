@@ -31,9 +31,7 @@ let botStarted = false;
       text === "START GAME" ||
       (
         text === "Continue" &&
-        div.getAttribute("dir") === "auto" &&
-        div.classList.contains("css-1n1h54g") &&
-        div.classList.contains("r-zzwi1n")
+        div.getAttribute("dir") === "auto"
       )
     ) {
       div.click();
