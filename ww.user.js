@@ -11,7 +11,15 @@
 // @run-at       document-start
 // ==/UserScript==
 
+let botStarted = false;
+
 (async function autoPlay() {
+  // Alert only once when the script first runs
+  if (!botStarted) {
+    alert("Bot is running");
+    botStarted = true;
+  }
+
   // Look for all div elements on the page
   const divs = document.querySelectorAll("div");
   // Loop over each div and click if its text matches "START GAME" or "Continue"
