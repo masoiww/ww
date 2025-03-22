@@ -11,7 +11,7 @@
 // @run-at       document-end
 // ==/UserScript==
 
-let botStarted = false;
+alert("Bot is running");
 function printHello(){
   console.log("Hello");
 }
