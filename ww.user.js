@@ -22,13 +22,23 @@ let botStarted = false;
 
   // Look for all div elements on the page
   const divs = document.querySelectorAll("div");
-  // Loop over each div and click if its text matches "START GAME" or "Continue"
+
+  // Loop over each div
   for (const div of divs) {
     const text = div.textContent.trim();
-    if (text === "START GAME" || text === "Continue") {
+
+    if (
+      text === "START GAME" ||
+      (
+        text === "Continue" &&
+        div.getAttribute("dir") === "auto" &&
+        div.classList.contains("css-1n1h54g") &&
+        div.classList.contains("r-zzwi1n")
+      )
+    ) {
       div.click();
-      console.log("Clicked:", text);
-      // Pause 0.5 seconds after clicking
+      console.log("Clicked:", text, "on element:", div);
+      // Pause 1.5 seconds after clicking
       await new Promise(resolve => setTimeout(resolve, 1500));
     }
   }
