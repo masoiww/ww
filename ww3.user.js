@@ -11,7 +11,7 @@
 // @run-at       document-start
 // ==/UserScript==
 
-(async function () {
+(function () {
   "use strict";
   window.alert("Script Bot play custom!");
   // _0x286fa6();
