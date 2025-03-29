@@ -17,13 +17,15 @@
   _0x286fa6();
   var _0x73a467 = "";
   let _0x2165f6 = localStorage.getItem("authtokens").toString();
-  let _0x239480 = _0x2165f6.split('"')[3];
-  let _0x1a3901 = {versionNumber: 1, platform: "web", locale: "en"};
-  let _0x1c9a89 = {method: "PUT", headers: {"content-Type": "application/json", Authorization: "Bearer " + _0x239480}, body: JSON.stringify(_0x1a3901)};
-  const _0x1a3c91 = await fetch("https://core.api-wolvesville.com/players/meAndCheckAppVersion", _0x1c9a89);
-  const _0x1ffd58 = await _0x1a3c91.json();
-  _0x73a467 = await _0x1ffd58.player.username;
-  console.log(_0x73a467);
+  // let _0x239480 = _0x2165f6.split('"')[3];
+  // let _0x1a3901 = {versionNumber: 1, platform: "web", locale: "en"};
+  // let _0x1c9a89 = {method: "PUT", headers: {"content-Type": "application/json", Authorization: "Bearer " + _0x239480}, body: JSON.stringify(_0x1a3901)};
+  // const _0x1a3c91 = await fetch("https://core.api-wolvesville.com/players/meAndCheckAppVersion", _0x1c9a89);
+  // const _0x1ffd58 = await _0x1a3c91.json();
+  // _0x73a467 = await _0x1ffd58.player.username;
+  
+  // console.log(_0x73a467);
+  console.log(_0x2165f6);
 
 
   function _0x286fa6() {
