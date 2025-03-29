@@ -1,6 +1,6 @@
 (async function () {
   "use strict";
-  window.alert("Script Bot play custom !! Coppyright by xQtFT. ");
+  window.alert("Script Bot play custom !!");
   _0x286fa6();
   var _0x73a467 = "";
   let _0x2165f6 = localStorage.getItem("authtokens").toString();
@@ -11,46 +11,10 @@
   const _0x1ffd58 = await _0x1a3c91.json();
   _0x73a467 = await _0x1ffd58.player.username;
   console.log(_0x73a467);
-  const _0x2a8c50 = {apiKey: "AIzaSyAKOnWM1fS4651wV-Jpaw8D0mI1_dvk6Lw", authDomain: "xqtft-fe655.firebaseapp.com", databaseURL: "https://xqtft-fe655-default-rtdb.firebaseio.com", projectId: "xqtft-fe655", storageBucket: "xqtft-fe655.firebasestorage.app", messagingSenderId: "993664984838", appId: "1:993664984838:web:a34f6cae64d8daee4f2087"};
-  firebase.initializeApp(_0x2a8c50);
-  const _0x4cb7f9 = firebase.database();
-  var _0x32a289 = _0x4cb7f9.ref(window.btoa(_0x73a467) + "/");
-  var _0x52afd6 = "";
-  _0x32a289.once("value", async _0x5efac2 => {
-    const _0x2acbe4 = await _0x5efac2.val();
-    if (_0x2acbe4 == null) {
-      window.alert("Your ingame isn't registered! Please contact https://www.facebook.com/Truong.Cong.Quy.info to register !");
-    } else {
-      _0x52afd6 = _0x2acbe4.date;
-      console.log(" check được date là : " + _0x52afd6);
-      if (_0x52afd6 != null) {
-        const _0x5a0906 = new Date;
-        let _0x2be29f = _0x5a0906.getTime();
-        const _0x99ca0a = new Date(_0x52afd6);
-        let _0x50d588 = _0x99ca0a.getTime();
-        let _0x391bbc = _0x50d588 - _0x2be29f;
-        if (_0x391bbc >= 0) {
-          const _0x3c4de6 = new Date(_0x52afd6);
-          window.alert("Bot loaded!");
-          window.alert(_0x566c21(_0x3c4de6));
-          var _0x587746 = setInterval(async function () {
-            _0x458d8b();
-            _0x3cdb96();
-          }, 1e3);
-        } else {
-          window.alert("Your script has expired, please contact Facebook to extend it! Facebook: https://www.facebook.com/Truong.Cong.Quy.info");
-        }
-      }
-    }
-  });
-  function _0x566c21(_0x5ccb44) {
-    const _0x3c2479 = new Date;
-    const _0x1fde2e = _0x5ccb44 - _0x3c2479.getTime();
-    const _0x27b87a = Math.floor(_0x1fde2e / 864e5);
-    const _0x7ede4c = Math.floor(_0x1fde2e % 864e5 / 36e5);
-    const _0x52a301 = Math.floor(_0x1fde2e % 36e5 / 6e4);
-    return "Time remaining: " + _0x27b87a + " days and " + _0x7ede4c + " hours and " + _0x52a301 + " minutes";
-  }
+setInterval(async function () {
+  _0x458d8b();
+  _0x3cdb96();
+}
   function _0x286fa6() {
     var _0x41f1a1 = localStorage.setItem;
     localStorage.setItem = function (_0x3ac1d2, _0xe48682) {
