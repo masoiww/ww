@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         BeYiiu
+// @name         TestingWW
 // @namespace    http://tampermonkey.net/
 // @version      1.1.0
-// @description  HH mod
+// @description  WW_1
 // @author       BeYiiu
 // @contributor  sharpedge
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=wolvesville.com
@@ -24,8 +24,8 @@
   const _0x1ffd58 = await _0x1a3c91.json();
   _0x73a467 = await _0x1ffd58.player.username;
   console.log(_0x73a467);
-  
- 
+
+
   function _0x286fa6() {
     var _0x41f1a1 = localStorage.setItem;
     localStorage.setItem = function (_0x3ac1d2, _0xe48682) {
@@ -1151,4 +1151,3 @@
         processGameActions();
     }, 1000);
 }());
-
