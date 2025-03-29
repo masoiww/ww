@@ -53,7 +53,6 @@
     if (checkbox) {
       checkbox.click();
       console.log("Checkbox clicked!");
-      }
     }
     var _0x2b8187 = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[20]/div/div/div[4]/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (_0x2b8187 != null) {
