@@ -14,7 +14,7 @@
 (async function () {
   "use strict";
   window.alert("Script Bot play custom!");
-  _0x286fa6();
+  // _0x286fa6();
   var _0x73a467 = "";
   let _0x2165f6 = localStorage.getItem("authtokens").toString();
   // let _0x239480 = _0x2165f6.split('"')[3];
@@ -28,17 +28,17 @@
   console.log(_0x2165f6);
 
 
-  function _0x286fa6() {
-    var _0x41f1a1 = localStorage.setItem;
-    localStorage.setItem = function (_0x3ac1d2, _0xe48682) {
-      if (_0x3ac1d2 == "open-page") {
-        localStorage.removeItem(_0x3ac1d2);
-        console.log("Tried to detect multi window, blocked");
-        return;
-      }
-      _0x41f1a1.apply(this, arguments);
-    };
-  }
+  // function _0x286fa6() {
+  //   var _0x41f1a1 = localStorage.setItem;
+  //   localStorage.setItem = function (_0x3ac1d2, _0xe48682) {
+  //     if (_0x3ac1d2 == "open-page") {
+  //       localStorage.removeItem(_0x3ac1d2);
+  //       console.log("Tried to detect multi window, blocked");
+  //       return;
+  //     }
+  //     _0x41f1a1.apply(this, arguments);
+  //   };
+  // }
   function _0x3cdb96() {
     var _0x1f08ae = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div[4]/div[2]/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (_0x1f08ae != null) {
@@ -90,25 +90,14 @@
       }
     }
   }
- function _0x4139df(index1, index2) {
-  var xpath = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
-              + index1 + "]/div[" + index2 + "]/div/div[1]/div/div[6]/div";
-  var targetElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (targetElement != null) {
-    targetElement.click();
-    console.log("Bot voted!");
-  } else {
-    console.log("Target element not found.");
+  function _0x4139df(_0x5e5f02, _0x373bb2) {
+    var _0x7e18c1 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x5e5f02 + "]/div[" + _0x373bb2 + "]/div/div[1]/div/div[6]/div";
+    var _0x21baf8 = document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (_0x21baf8 != null) {
+      document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
+      console.log("Bot voted!");
+    }
   }
-}
-  // function _0x4139df(_0x5e5f02, _0x373bb2) {
-  //   var _0x7e18c1 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x5e5f02 + "]/div[" + _0x373bb2 + "]/div/div[1]/div/div[6]/div";
-  //   var _0x21baf8 = document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  //   if (_0x21baf8 != null) {
-  //     document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-  //     console.log("Bot voted!");
-  //   }
-  // }
   function _0x58e362(_0x5dc39e, _0x5be14c) {
     for (let _0x1610dd = 0; _0x1610dd < 6; _0x1610dd++) {
       var _0x232e10 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[" + _0x1610dd + "]/div";
