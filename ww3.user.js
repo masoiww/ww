@@ -45,6 +45,14 @@
         console.log("Bot started the game!");
       }
     }
+
+    // Auto-click the checkbox element if it exists
+    var checkbox = document.querySelector('input[type="checkbox"]');
+    if (checkbox) {
+      checkbox.click();
+      console.log("Checkbox clicked!");
+    }
+    }
     var _0x2b8187 = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[20]/div/div/div[4]/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (_0x2b8187 != null) {
       if (_0x2b8187.outerHTML.includes(">Continue</div>")) {
@@ -1148,6 +1156,7 @@
     }
   }
       setInterval(function() {
-        processGameActions();
+        _0x458d8b();
+        _0x3cdb96();
     }, 1000);
 }());
