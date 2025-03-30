@@ -78,16 +78,16 @@ setInterval(async function () {
   //   }
   // }
   function BotVote(row_index, column_index) {
-  // Calculate the dynamic div index for the column based on the pattern
-  console.log("row_index: " + row_index + ", column index: " + column_index)
-  // var dynamicDivIndex = column_index + row_index - 1;
-  
-  // Build the XPath with the dynamic parts.
-  // var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
-  //             + row_index + "]/div[" + dynamicDivIndex + "]/div/div[1]/div/div[6]";
+    
+    // Check if any element with text containing "Voting" exists
+  var votingElement = document.evaluate("//div[contains(text(), 'Voting')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (votingElement) {
+    console.log("Voting in progress. Aborting BotVote.");
+    return;
+  }
+    
   var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
               + row_index + "]/div[" + column_index + "]/div/div[1]/div/div[6]";
-
   
   var node = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (node !== null) {
