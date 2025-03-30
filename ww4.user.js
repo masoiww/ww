@@ -12,7 +12,7 @@
   _0x73a467 = await _0x1ffd58.player.username;
   console.log(_0x73a467);
 setInterval(async function () {
-  _0x458d8b();
+  votingProcessAction();
   _0x3cdb96();
 }, 1000);
   function _0x286fa6() {
@@ -69,14 +69,29 @@ setInterval(async function () {
       }
     }
   }
-  function _0x4139df(_0x5e5f02, _0x373bb2) {
-    var _0x7e18c1 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x5e5f02 + "]/div[" + _0x373bb2 + "]/div/div[1]/div/div[6]/div";
-    var _0x21baf8 = document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    if (_0x21baf8 != null) {
-      document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-      console.log("Bot voted!");
-    }
+  // function BotVote(row_index, column_index) {
+  //   var _0x7e18c1 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + row_index + "]/div[" + column_index + "]/div/div[1]/div/div[6]/div";
+  //   var _0x21baf8 = document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  //   if (_0x21baf8 != null) {
+  //     document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
+  //     console.log("Bot voted!");
+  //   }
+  // }
+  function BotVote(row_index, column_index) {
+  // Calculate the dynamic div index for the column based on the pattern
+  var dynamicDivIndex = column_index + row_index - 1;
+  
+  // Build the XPath with the dynamic parts.
+  var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
+              + row_index + "]/div[" + dynamicDivIndex + "]/div/div[1]/div/div[6]";
+  
+  var node = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (node !== null) {
+    node.click();
+    console.log("Bot voted!");
   }
+}
+
   function _0x58e362(_0x5dc39e, _0x5be14c) {
     for (let _0x1610dd = 0; _0x1610dd < 6; _0x1610dd++) {
       var _0x232e10 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[" + _0x1610dd + "]/div";
@@ -172,7 +187,7 @@ setInterval(async function () {
       }
     }
   }
-  function _0x18061a() {
+  function getMyRole() {
     var _0x3a1370 = null;
     for (let _0x5ab1a6 = 1; _0x5ab1a6 < 5; _0x5ab1a6++) {
       for (let _0x5e362d = 1; _0x5e362d < 5; _0x5e362d++) {
@@ -351,7 +366,7 @@ setInterval(async function () {
     }
     return _0x3a1370;
   }
-  function _0x3596a6() {
+  function getCplRoleList() {
     const _0x3ab079 = [];
     for (let _0x26dfee = 1; _0x26dfee < 5; _0x26dfee++) {
       for (let _0x506f1a = 1; _0x506f1a < 5; _0x506f1a++) {
@@ -744,7 +759,7 @@ setInterval(async function () {
     let _0xd3f001 = Math.floor(_0x58fb2f) + _0x5e8f55;
     return _0xd3f001;
   }
-  function _0x34b36f() {
+  function voteYN() {
     var _0x1e528e = "no";
     for (let _0x2c4938 = 1; _0x2c4938 < 5; _0x2c4938++) {
       for (let _0x28803d = 1; _0x28803d < 5; _0x28803d++) {
@@ -769,32 +784,38 @@ setInterval(async function () {
     }
     return _0x1e528e;
   }
-  function _0x458d8b() {
-    var _0x5984b0 = _0x18061a();
-    var _0xbc4a3f = _0x3596a6();
-    if (_0x5984b0 != null && _0xbc4a3f.length > 0) {
-      if (_0xbc4a3f.length == 3) {
-        if (_0xbc4a3f[0].includes("wolf")) {
-          var _0x449409 = _0x34b36f();
-          if (_0x449409 != "yes") {
-            _0x4139df(_0xbc4a3f[1], _0xbc4a3f[2]);
+  function votingProcessAction() {
+    var myRole = getMyRole();
+    var cplRoleList = getCplRoleList();
+    console.log("myRole is " + myRole + " , " + "cplRoleList length is " + cplRoleList.length)
+    if (myRole != null && cplRoleList.length > 0) {
+      console.log("Here 1")
+      if (cplRoleList.length == 3) {
+        console.log("Here 2")
+        if (myRole.includes("wolf")) {
+          console.log("Tao la Soi")
+          var vote_YN = voteYN();
+          console.log("vote_YN " + vote_YN)
+          if (vote_YN != "yes") {
+            console.log("Run Voting Function Here")
+            BotVote(cplRoleList[1], cplRoleList[2]);
           }
         }
       }
-      if (_0xbc4a3f.length == 6) {
-        if (_0xbc4a3f[0].includes("wolf")) {
-          var _0x54e000 = _0x34b36f();
+      if (cplRoleList.length == 6) {
+        if (cplRoleList[0].includes("wolf")) {
+          var _0x54e000 = voteYN();
           if (_0x54e000 != "yes") {
-            _0x4139df(_0xbc4a3f[1], _0xbc4a3f[2]);
+            BotVote(cplRoleList[1], cplRoleList[2]);
           }
-        } else if (_0xbc4a3f[3].includes("wolf")) {
-          var _0x5ebff2 = _0x34b36f();
+        } else if (cplRoleList[3].includes("wolf")) {
+          var _0x5ebff2 = voteYN();
           if (_0x5ebff2 != "yes") {
-            _0x4139df(_0xbc4a3f[4], _0xbc4a3f[5]);
+            BotVote(cplRoleList[4], cplRoleList[5]);
           }
         }
       }
-      if (_0x5984b0 == "gunner" || _0x5984b0 == "vigilante") {
+      if (myRole == "gunner" || myRole == "vigilante") {
         for (let _0x4ea8ad = 1; _0x4ea8ad < 5; _0x4ea8ad++) {
           for (let _0x1a9ce2 = 1; _0x1a9ce2 < 5; _0x1a9ce2++) {
             var _0x118240 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x4ea8ad + "]/div[" + _0x1a9ce2 + "]/div/div[4]";
@@ -806,9 +827,9 @@ setInterval(async function () {
             }
           }
         }
-      } else if (_0x5984b0 == "priest") {
-        if (_0xbc4a3f.length == 3) {
-          if (_0xbc4a3f[0].includes("wolf")) {
+      } else if (myRole == "priest") {
+        if (cplRoleList.length == 3) {
+          if (cplRoleList[0].includes("wolf")) {
             _0x4e1b15();
           } else {
             for (let _0x1d20a7 = 1; _0x1d20a7 < 5; _0x1d20a7++) {
@@ -824,8 +845,8 @@ setInterval(async function () {
             }
           }
         }
-        if (_0xbc4a3f.length == 6) {
-          if (_0xbc4a3f[0].includes("wolf") || _0xbc4a3f[3].includes("wolf")) {
+        if (cplRoleList.length == 6) {
+          if (cplRoleList[0].includes("wolf") || cplRoleList[3].includes("wolf")) {
             _0x4e1b15();
           } else {
             for (let _0x54ecc5 = 1; _0x54ecc5 < 5; _0x54ecc5++) {
@@ -841,8 +862,8 @@ setInterval(async function () {
             }
           }
         }
-      } else if (_0x5984b0 == "junior_werewolf" || _0x5984b0 == "split_wolf") {
-        var _0x38ef67 = _0x3d4f64(_0xbc4a3f[1], _0xbc4a3f[2]);
+      } else if (myRole == "junior_werewolf" || myRole == "split_wolf") {
+        var _0x38ef67 = _0x3d4f64(cplRoleList[1], cplRoleList[2]);
         var _0x5bbc2d = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div/div/div[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         if (_0x5bbc2d != null) {
           if (_0x5bbc2d.outerHTML.includes(">25s</div></div>")) {
@@ -937,16 +958,16 @@ setInterval(async function () {
             }
           }
           if (_0x5bbc2d.outerHTML.includes(">20s</div></div>")) {
-            if (_0xbc4a3f.length == 3) {
-              if (_0xbc4a3f[0] != "junior_werewolf" || _0xbc4a3f[0] != "split_wolf" || _0xbc4a3f[0] != "nightmare_werewolf" || _0xbc4a3f[0] != "wolf_shaman" || _0xbc4a3f[0] != "shadow_wolf" || _0xbc4a3f[0] != "guardian_wolf" || _0xbc4a3f[0] != "alpha_werewolf" || _0xbc4a3f[0] != "wolf_seer" || _0xbc4a3f[0] != "kitten_wolf" || _0xbc4a3f[0] != "wolffluencer" || _0xbc4a3f[0] != "voodoo_werewolf" || _0xbc4a3f[0] != "storm_wolf" || _0xbc4a3f[0] != "swamp_wolf" || _0xbc4a3f[0] != "wolf_trickster" || _0xbc4a3f[0] != "confusion_wolf" || _0xbc4a3f[0] != "wolf_scribe" || _0xbc4a3f[0] != "werewolf_berserk" || _0xbc4a3f[0] != "toxic_wolf" || _0xbc4a3f[0] != "wolfpacifist" || _0xbc4a3f[0] != "jelly_wolf" || _0xbc4a3f[0] != "stubborn_werewolf" || _0xbc4a3f[0] != "wolf_summoner" || _0xbc4a3f[0] != "blind_werewolf") {
-                _0x4139df(_0xbc4a3f[1], _0xbc4a3f[2]);
+            if (cplRoleList.length == 3) {
+              if (cplRoleList[0] != "junior_werewolf" || cplRoleList[0] != "split_wolf" || cplRoleList[0] != "nightmare_werewolf" || cplRoleList[0] != "wolf_shaman" || cplRoleList[0] != "shadow_wolf" || cplRoleList[0] != "guardian_wolf" || cplRoleList[0] != "alpha_werewolf" || cplRoleList[0] != "wolf_seer" || cplRoleList[0] != "kitten_wolf" || cplRoleList[0] != "wolffluencer" || cplRoleList[0] != "voodoo_werewolf" || cplRoleList[0] != "storm_wolf" || cplRoleList[0] != "swamp_wolf" || cplRoleList[0] != "wolf_trickster" || cplRoleList[0] != "confusion_wolf" || cplRoleList[0] != "wolf_scribe" || cplRoleList[0] != "werewolf_berserk" || cplRoleList[0] != "toxic_wolf" || cplRoleList[0] != "wolfpacifist" || cplRoleList[0] != "jelly_wolf" || cplRoleList[0] != "stubborn_werewolf" || cplRoleList[0] != "wolf_summoner" || cplRoleList[0] != "blind_werewolf") {
+                BotVote(cplRoleList[1], cplRoleList[2]);
               }
             }
-            if (_0xbc4a3f.length == 6) {
-              if (_0xbc4a3f[0] != "junior_werewolf" || _0xbc4a3f[0] != "split_wolf" || _0xbc4a3f[0] != "nightmare_werewolf" || _0xbc4a3f[0] != "wolf_shaman" || _0xbc4a3f[0] != "shadow_wolf" || _0xbc4a3f[0] != "guardian_wolf" || _0xbc4a3f[0] != "alpha_werewolf" || _0xbc4a3f[0] != "wolf_seer" || _0xbc4a3f[0] != "kitten_wolf" || _0xbc4a3f[0] != "wolffluencer" || _0xbc4a3f[0] != "voodoo_werewolf" || _0xbc4a3f[0] != "storm_wolf" || _0xbc4a3f[0] != "swamp_wolf" || _0xbc4a3f[0] != "wolf_trickster" || _0xbc4a3f[0] != "confusion_wolf" || _0xbc4a3f[0] != "wolf_scribe" || _0xbc4a3f[0] != "werewolf_berserk" || _0xbc4a3f[0] != "toxic_wolf" || _0xbc4a3f[0] != "wolfpacifist" || _0xbc4a3f[0] != "jelly_wolf" || _0xbc4a3f[0] != "stubborn_werewolf" || _0xbc4a3f[0] != "wolf_summoner" || _0xbc4a3f[0] != "blind_werewolf") {
-                _0x4139df(_0xbc4a3f[1], _0xbc4a3f[2]);
+            if (cplRoleList.length == 6) {
+              if (cplRoleList[0] != "junior_werewolf" || cplRoleList[0] != "split_wolf" || cplRoleList[0] != "nightmare_werewolf" || cplRoleList[0] != "wolf_shaman" || cplRoleList[0] != "shadow_wolf" || cplRoleList[0] != "guardian_wolf" || cplRoleList[0] != "alpha_werewolf" || cplRoleList[0] != "wolf_seer" || cplRoleList[0] != "kitten_wolf" || cplRoleList[0] != "wolffluencer" || cplRoleList[0] != "voodoo_werewolf" || cplRoleList[0] != "storm_wolf" || cplRoleList[0] != "swamp_wolf" || cplRoleList[0] != "wolf_trickster" || cplRoleList[0] != "confusion_wolf" || cplRoleList[0] != "wolf_scribe" || cplRoleList[0] != "werewolf_berserk" || cplRoleList[0] != "toxic_wolf" || cplRoleList[0] != "wolfpacifist" || cplRoleList[0] != "jelly_wolf" || cplRoleList[0] != "stubborn_werewolf" || cplRoleList[0] != "wolf_summoner" || cplRoleList[0] != "blind_werewolf") {
+                BotVote(cplRoleList[1], cplRoleList[2]);
               } else {
-                _0x4139df(_0xbc4a3f[4], _0xbc4a3f[5]);
+                BotVote(cplRoleList[4], cplRoleList[5]);
               }
             }
           }
@@ -954,55 +975,55 @@ setInterval(async function () {
             _0x3b64f7(_0x2a16e6, _0x3d0436);
           }
         }
-      } else if (_0x5984b0 == "nightmare_werewolf" || _0x5984b0 == "wolf_shaman" || _0x5984b0 == "shadow_wolf" || _0x5984b0 == "guardian_wolf" || _0x5984b0 == "alpha_werewolf" || _0x5984b0 == "wolf_seer" || _0x5984b0 == "kitten_wolf" || _0x5984b0 == "wolffluencer" || _0x5984b0 == "voodoo_werewolf" || _0x5984b0 == "storm_wolf" || _0x5984b0 == "swamp_wolf" || _0x5984b0 == "wolf_trickster" || _0x5984b0 == "confusion_wolf" || _0x5984b0 == "wolf_scribe" || _0x5984b0 == "werewolf_berserk" || _0x5984b0 == "toxic_wolf" || _0x5984b0 == "wolfpacifist" || _0x5984b0 == "jelly_wolf" || _0x5984b0 == "stubborn_werewolf" || _0x5984b0 == "wolf_summoner" || _0x5984b0 == "blind_werewolf" || _0x5984b0 == "werewolf") {
-        if (_0xbc4a3f.length == 3) {
+      } else if (myRole == "nightmare_werewolf" || myRole == "wolf_shaman" || myRole == "shadow_wolf" || myRole == "guardian_wolf" || myRole == "alpha_werewolf" || myRole == "wolf_seer" || myRole == "kitten_wolf" || myRole == "wolffluencer" || myRole == "voodoo_werewolf" || myRole == "storm_wolf" || myRole == "swamp_wolf" || myRole == "wolf_trickster" || myRole == "confusion_wolf" || myRole == "wolf_scribe" || myRole == "werewolf_berserk" || myRole == "toxic_wolf" || myRole == "wolfpacifist" || myRole == "jelly_wolf" || myRole == "stubborn_werewolf" || myRole == "wolf_summoner" || myRole == "blind_werewolf" || myRole == "werewolf") {
+        if (cplRoleList.length == 3) {
           var _0x12fb5a;
-          if (_0xbc4a3f[1] == 1) {
-            if (_0xbc4a3f[2] == 1) {
+          if (cplRoleList[1] == 1) {
+            if (cplRoleList[2] == 1) {
               _0x12fb5a = "1";
-            } else if (_0xbc4a3f[2] == 2) {
+            } else if (cplRoleList[2] == 2) {
               _0x12fb5a = "2";
-            } else if (_0xbc4a3f[2] == 3) {
+            } else if (cplRoleList[2] == 3) {
               _0x12fb5a = "3";
-            } else if (_0xbc4a3f[2] == 4) {
+            } else if (cplRoleList[2] == 4) {
               _0x12fb5a = "4";
             }
-          } else if (_0xbc4a3f[1] == 2) {
-            if (_0xbc4a3f[2] == 1) {
+          } else if (cplRoleList[1] == 2) {
+            if (cplRoleList[2] == 1) {
               _0x12fb5a = "5";
-            } else if (_0xbc4a3f[2] == 2) {
+            } else if (cplRoleList[2] == 2) {
               _0x12fb5a = "6";
-            } else if (_0xbc4a3f[2] == 3) {
+            } else if (cplRoleList[2] == 3) {
               _0x12fb5a = "7";
-            } else if (_0xbc4a3f[2] == 4) {
+            } else if (cplRoleList[2] == 4) {
               _0x12fb5a = "8";
             }
-          } else if (_0xbc4a3f[1] == 3) {
-            if (_0xbc4a3f[2] == 1) {
+          } else if (cplRoleList[1] == 3) {
+            if (cplRoleList[2] == 1) {
               _0x12fb5a = "9";
-            } else if (_0xbc4a3f[2] == 2) {
+            } else if (cplRoleList[2] == 2) {
               _0x12fb5a = "10";
-            } else if (_0xbc4a3f[2] == 3) {
+            } else if (cplRoleList[2] == 3) {
               _0x12fb5a = "11";
-            } else if (_0xbc4a3f[2] == 4) {
+            } else if (cplRoleList[2] == 4) {
               _0x12fb5a = "12";
             }
-          } else if (_0xbc4a3f[1] == 4) {
-            if (_0xbc4a3f[2] == 1) {
+          } else if (cplRoleList[1] == 4) {
+            if (cplRoleList[2] == 1) {
               _0x12fb5a = "13";
-            } else if (_0xbc4a3f[2] == 2) {
+            } else if (cplRoleList[2] == 2) {
               _0x12fb5a = "14";
-            } else if (_0xbc4a3f[2] == 3) {
+            } else if (cplRoleList[2] == 3) {
               _0x12fb5a = "15";
-            } else if (_0xbc4a3f[2] == 4) {
+            } else if (cplRoleList[2] == 4) {
               _0x12fb5a = "16";
             }
           }
           var _0x122564 = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div/div/div[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
           if (_0x122564 != null) {
             if (_0x122564.outerHTML.includes(">25s</div></div>")) {
-              if (_0xbc4a3f[0] != "priest") {
-                _0x4139df(_0xbc4a3f[1], _0xbc4a3f[2]);
+              if (cplRoleList[0] != "priest") {
+                BotVote(cplRoleList[1], cplRoleList[2]);
                 var _0x1cbf09 = "My couple is " + _0x12fb5a;
                 var _0x50d949 = "Mine " + _0x12fb5a;
                 var _0x52f008 = _0x12fb5a;
@@ -1017,95 +1038,95 @@ setInterval(async function () {
             }
           }
         }
-        if (_0xbc4a3f.length == 6) {
+        if (cplRoleList.length == 6) {
           var _0x3176bc;
           var _0x501cfa;
-          if (_0xbc4a3f[1] == 1) {
-            if (_0xbc4a3f[2] == 1) {
+          if (cplRoleList[1] == 1) {
+            if (cplRoleList[2] == 1) {
               _0x3176bc = "1";
-            } else if (_0xbc4a3f[2] == 2) {
+            } else if (cplRoleList[2] == 2) {
               _0x3176bc = "2";
-            } else if (_0xbc4a3f[2] == 3) {
+            } else if (cplRoleList[2] == 3) {
               _0x3176bc = "3";
-            } else if (_0xbc4a3f[2] == 4) {
+            } else if (cplRoleList[2] == 4) {
               _0x3176bc = "4";
             }
-          } else if (_0xbc4a3f[1] == 2) {
-            if (_0xbc4a3f[2] == 1) {
+          } else if (cplRoleList[1] == 2) {
+            if (cplRoleList[2] == 1) {
               _0x3176bc = "5";
-            } else if (_0xbc4a3f[2] == 2) {
+            } else if (cplRoleList[2] == 2) {
               _0x3176bc = "6";
-            } else if (_0xbc4a3f[2] == 3) {
+            } else if (cplRoleList[2] == 3) {
               _0x3176bc = "7";
-            } else if (_0xbc4a3f[2] == 4) {
+            } else if (cplRoleList[2] == 4) {
               _0x3176bc = "8";
             }
-          } else if (_0xbc4a3f[1] == 3) {
-            if (_0xbc4a3f[2] == 1) {
+          } else if (cplRoleList[1] == 3) {
+            if (cplRoleList[2] == 1) {
               _0x3176bc = "9";
-            } else if (_0xbc4a3f[2] == 2) {
+            } else if (cplRoleList[2] == 2) {
               _0x3176bc = "10";
-            } else if (_0xbc4a3f[2] == 3) {
+            } else if (cplRoleList[2] == 3) {
               _0x3176bc = "11";
-            } else if (_0xbc4a3f[2] == 4) {
+            } else if (cplRoleList[2] == 4) {
               _0x3176bc = "12";
             }
-          } else if (_0xbc4a3f[1] == 4) {
-            if (_0xbc4a3f[2] == 1) {
+          } else if (cplRoleList[1] == 4) {
+            if (cplRoleList[2] == 1) {
               _0x3176bc = "13";
-            } else if (_0xbc4a3f[2] == 2) {
+            } else if (cplRoleList[2] == 2) {
               _0x3176bc = "14";
-            } else if (_0xbc4a3f[2] == 3) {
+            } else if (cplRoleList[2] == 3) {
               _0x3176bc = "15";
-            } else if (_0xbc4a3f[2] == 4) {
+            } else if (cplRoleList[2] == 4) {
               _0x3176bc = "16";
             }
           }
-          if (_0xbc4a3f[4] == 1) {
-            if (_0xbc4a3f[5] == 1) {
+          if (cplRoleList[4] == 1) {
+            if (cplRoleList[5] == 1) {
               _0x501cfa = "1";
-            } else if (_0xbc4a3f[5] == 2) {
+            } else if (cplRoleList[5] == 2) {
               _0x501cfa = "2";
-            } else if (_0xbc4a3f[5] == 3) {
+            } else if (cplRoleList[5] == 3) {
               _0x501cfa = "3";
-            } else if (_0xbc4a3f[5] == 4) {
+            } else if (cplRoleList[5] == 4) {
               _0x501cfa = "4";
             }
-          } else if (_0xbc4a3f[4] == 2) {
-            if (_0xbc4a3f[5] == 1) {
+          } else if (cplRoleList[4] == 2) {
+            if (cplRoleList[5] == 1) {
               _0x501cfa = "5";
-            } else if (_0xbc4a3f[5] == 2) {
+            } else if (cplRoleList[5] == 2) {
               _0x501cfa = "6";
-            } else if (_0xbc4a3f[5] == 3) {
+            } else if (cplRoleList[5] == 3) {
               _0x501cfa = "7";
-            } else if (_0xbc4a3f[5] == 4) {
+            } else if (cplRoleList[5] == 4) {
               _0x501cfa = "8";
             }
-          } else if (_0xbc4a3f[4] == 3) {
-            if (_0xbc4a3f[5] == 1) {
+          } else if (cplRoleList[4] == 3) {
+            if (cplRoleList[5] == 1) {
               _0x501cfa = "9";
-            } else if (_0xbc4a3f[5] == 2) {
+            } else if (cplRoleList[5] == 2) {
               _0x501cfa = "10";
-            } else if (_0xbc4a3f[5] == 3) {
+            } else if (cplRoleList[5] == 3) {
               _0x501cfa = "11";
-            } else if (_0xbc4a3f[5] == 4) {
+            } else if (cplRoleList[5] == 4) {
               _0x501cfa = "12";
             }
-          } else if (_0xbc4a3f[4] == 4) {
-            if (_0xbc4a3f[5] == 1) {
+          } else if (cplRoleList[4] == 4) {
+            if (cplRoleList[5] == 1) {
               _0x501cfa = "13";
-            } else if (_0xbc4a3f[5] == 2) {
+            } else if (cplRoleList[5] == 2) {
               _0x501cfa = "14";
-            } else if (_0xbc4a3f[5] == 3) {
+            } else if (cplRoleList[5] == 3) {
               _0x501cfa = "15";
-            } else if (_0xbc4a3f[5] == 4) {
+            } else if (cplRoleList[5] == 4) {
               _0x501cfa = "16";
             }
           }
-          if (_0xbc4a3f[0] == "priest") {
+          if (cplRoleList[0] == "priest") {
             _0x3176bc = _0x3176bc + " - priest";
           }
-          if (_0xbc4a3f[3] == "priest") {
+          if (cplRoleList[3] == "priest") {
             _0x501cfa = _0x501cfa + " - priest";
           }
           var _0x3073f8 = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[1]/div[1]/div/div/div[1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -1121,14 +1142,14 @@ setInterval(async function () {
               _0x336cbf(_0x2aa11c[_0x236b7f(0, _0x2aa11c.length - 1)]);
             }
             if (_0x3073f8.outerHTML.includes(">27s</div></div>")) {
-              if (_0xbc4a3f[0] != "priest" && _0xbc4a3f[3] != "priest") {
-                _0x4139df(_0xbc4a3f[1], _0xbc4a3f[2]);
+              if (cplRoleList[0] != "priest" && cplRoleList[3] != "priest") {
+                BotVote(cplRoleList[1], cplRoleList[2]);
               }
-              if (_0xbc4a3f[0].includes("wolf")) {
-                _0x4139df(_0xbc4a3f[4], _0xbc4a3f[5]);
+              if (cplRoleList[0].includes("wolf")) {
+                BotVote(cplRoleList[4], cplRoleList[5]);
               }
-              if (_0xbc4a3f[3].includes("wolf")) {
-                _0x4139df(_0xbc4a3f[1], _0xbc4a3f[2]);
+              if (cplRoleList[3].includes("wolf")) {
+                BotVote(cplRoleList[1], cplRoleList[2]);
               }
             }
           }
