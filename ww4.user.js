@@ -77,39 +77,26 @@ setInterval(async function () {
   //     console.log("Bot voted!");
   //   }
   // }
-//   function BotVote(row_index, column_index) {
-//   // Calculate the dynamic div index for the column based on the pattern
-//   console.log("row_index: " + row_index + ", column index: " + column_index)
-//   var dynamicDivIndex = column_index + row_index - 1;
+  function BotVote(row_index, column_index) {
+  // Calculate the dynamic div index for the column based on the pattern
+  console.log("row_index: " + row_index + ", column index: " + column_index)
+  // var dynamicDivIndex = column_index + row_index - 1;
   
-//   // Build the XPath with the dynamic parts.
-//   var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
-//               + row_index + "]/div[" + dynamicDivIndex + "]/div/div[1]/div/div[6]";
-  
-//   var node = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-//   if (node !== null) {
-//     node.click();
-//     console.log("Bot voted!");
-//   }
-// }
- function BotVote(row_index, column_index) {
-  // Build the XPath with the dynamic row and column parts.
+  // Build the XPath with the dynamic parts.
+  // var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
+  //             + row_index + "]/div[" + dynamicDivIndex + "]/div/div[1]/div/div[6]";
   var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
-              + row_index + "]/div[" + column_index + "]";
+              + row_index + "]/div[" + column_index + "]/div/div[1]/div/div[6]";
+
   
   var node = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  
-  if (node) {
+  if (node !== null) {
     node.click();
-    console.log("Bot voted!");
-  } else {
-    console.log("Target element not found!");
+    console.log("Bot voted at " + row_index + column_index);
   }
-}
+};
 
-
-
-
+  
   function _0x58e362(_0x5dc39e, _0x5be14c) {
     for (let _0x1610dd = 0; _0x1610dd < 6; _0x1610dd++) {
       var _0x232e10 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[" + _0x1610dd + "]/div";
