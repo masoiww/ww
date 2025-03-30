@@ -77,20 +77,47 @@ setInterval(async function () {
   //     console.log("Bot voted!");
   //   }
   // }
+//   function BotVote(row_index, column_index) {
+//   // Calculate the dynamic div index for the column based on the pattern
+//   console.log("row_index: " + row_index + ", column index: " + column_index)
+//   var dynamicDivIndex = column_index + row_index - 1;
+  
+//   // Build the XPath with the dynamic parts.
+//   var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
+//               + row_index + "]/div[" + dynamicDivIndex + "]/div/div[1]/div/div[6]";
+  
+//   var node = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+//   if (node !== null) {
+//     node.click();
+//     console.log("Bot voted!");
+//   }
+// }
   function BotVote(row_index, column_index) {
-  // Calculate the dynamic div index for the column based on the pattern
-  var dynamicDivIndex = column_index + row_index - 1;
+  // For the "div6" structure, calculate:
+  var dynamicIndexDiv6 = column_index + row_index - 1;
+  var xpathDiv6 = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
+                  + row_index + "]/div[" + dynamicIndexDiv6 + "]/div/div[1]/div/div[6]";
   
-  // Build the XPath with the dynamic parts.
-  var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
-              + row_index + "]/div[" + dynamicDivIndex + "]/div/div[1]/div/div[6]";
+  var node = document.evaluate(xpathDiv6, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   
-  var node = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (node !== null) {
+  // If not found, try the "div7" structure with adjusted dynamic index
+  if (!node) {
+    // For the "div7" structure, adjust the dynamic index:
+    var dynamicIndexDiv7 = column_index + row_index - 2;
+    var xpathDiv7 = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
+                    + row_index + "]/div[" + dynamicIndexDiv7 + "]/div/div[1]/div/div[7]";
+    
+    node = document.evaluate(xpathDiv7, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  }
+  
+  if (node) {
     node.click();
     console.log("Bot voted!");
+  } else {
+    console.log("Target element not found!");
   }
 }
+
 
   function _0x58e362(_0x5dc39e, _0x5be14c) {
     for (let _0x1610dd = 0; _0x1610dd < 6; _0x1610dd++) {
