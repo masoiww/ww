@@ -203,28 +203,45 @@ setInterval(async function () {
   }
   
   function _0x3b64f7(_0x30af29, _0x3a59e1) {
-    for (let _0x322b8f = 0; _0x322b8f < 6; _0x322b8f++) {
-      var _0x331fe7 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[" + _0x322b8f + "]/div";
-      var _0x3f3df2 = document.evaluate(_0x331fe7, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-      if (_0x3f3df2 != null) {
-        if (_0x3f3df2.outerHTML.includes("/static/media/junior_werewolf_selection_marker") || _0x3f3df2.outerHTML.includes("/static/media/splitwolf_bind_bar")) {
-          document.evaluate(_0x331fe7, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-          var _0x42699a = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x30af29 + "]/div[" + _0x3a59e1 + "]/div/div[5]/div[1]/div/div";
-          var _0x209030 = document.evaluate(_0x42699a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-          if (_0x209030 != null) {
-            document.evaluate(_0x42699a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-            // console.log("Bot tagged!");
-            
+  let tagged = false; // flag to track if tagging has occurred
+  for (let _0x322b8f = 0; _0x322b8f < 6; _0x322b8f++) {
+    var _0x331fe7 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[" + _0x322b8f + "]/div";
+    var _0x3f3df2 = document.evaluate(_0x331fe7, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    
+    if (_0x3f3df2 != null) {
+      if (_0x3f3df2.outerHTML.includes("/static/media/junior_werewolf_selection_marker") ||
+          _0x3f3df2.outerHTML.includes("/static/media/splitwolf_bind_bar")) {
+        
+        _0x3f3df2.click();
+
+        // First tagging element
+        var _0x42699a = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x30af29 + "]/div[" + _0x3a59e1 + "]/div/div[5]/div[1]/div/div";
+        var _0x209030 = document.evaluate(_0x42699a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        if (_0x209030 != null) {
+          _0x209030.click(); // use the stored node instead of re-evaluating
+          console.log("Bot tagged! 1");
+          tagged = true;
+        }
+        
+        // Only attempt the second tagging if the first wasn't executed
+        if (!tagged) {
           var _0x133a3a = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x30af29 + "]/div[" + _0x3a59e1 + "]/div/div[4]/div[1]/div/div";
           var _0x3059db = document.evaluate(_0x133a3a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
           if (_0x3059db != null) {
-            document.evaluate(_0x133a3a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-            // console.log("Bot tagged!");
+            _0x3059db.click(); // use the stored node
+            console.log("Bot tagged! 2");
+            tagged = true;
           }
         }
       }
     }
+    // Break out of the loop if a tag has been performed.
+    if (tagged) {
+      break;
+    }
   }
+}
+
   function getMyRole() {
     var _0x3a1370 = null;
     for (let _0x5ab1a6 = 1; _0x5ab1a6 < 5; _0x5ab1a6++) {
