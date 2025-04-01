@@ -214,11 +214,7 @@ setInterval(async function () {
           if (_0x209030 != null) {
             document.evaluate(_0x42699a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
             // console.log("Bot tagged!");
-            async function run() {
-              await sleep(1000); // pauses here for 1 second
-              }
-            run()
-          }
+            
           var _0x133a3a = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x30af29 + "]/div[" + _0x3a59e1 + "]/div/div[4]/div[1]/div/div";
           var _0x3059db = document.evaluate(_0x133a3a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
           if (_0x3059db != null) {
