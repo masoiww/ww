@@ -12,39 +12,39 @@
   _0x73a467 = await _0x1ffd58.player.username;
 
 
-function clickVoteButtonIfMarkerNotFound() {
-  // Look for the marker image with the specified src and class
-  const markerImg = document.querySelector(
-    'img[src="/static/media/junior_werewolf_selection_marker.e95ea3daca27e8af7d13.png"].css-1iagukv'
-  );
-  const jww = document.querySelector(
-    'img[src="/static/media/icon_junior_werewolf_filled.118d63fe2617f43b4fc7.svg"].css-1kfggsr'
-  );
+// function clickVoteButtonIfMarkerNotFound() {
+//   // Look for the marker image with the specified src and class
+//   const markerImg = document.querySelector(
+//     'img[src="/static/media/junior_werewolf_selection_marker.e95ea3daca27e8af7d13.png"].css-1iagukv'
+//   );
+//   const jww = document.querySelector(
+//     'img[src="/static/media/icon_junior_werewolf_filled.118d63fe2617f43b4fc7.svg"].css-1kfggsr'
+//   );
 
-  // If the marker image is not found...
-  if (!markerImg && jww) {
-    // Locate the vote button element by its classes
-    const voteButton = document.querySelector(
-      'img[src="/static/media/vote_werewolves.9c7bf978b09b2b925d79.png"].css-1gvtegk'
-    );
+//   // If the marker image is not found...
+//   if (!markerImg && jww) {
+//     // Locate the vote button element by its classes
+//     const voteButton = document.querySelector(
+//       'img[src="/static/media/vote_werewolves.9c7bf978b09b2b925d79.png"].css-1gvtegk'
+//     );
 
-    if (voteButton) {
-      voteButton.click();
+//     if (voteButton) {
+//       voteButton.click();
       
-    } else {
-      // console.error("Vote button element not found.");
-    }
-  } else {
-    // console.log("Marker image found. No click action performed.");
-  }
-}
+//     } else {
+//       // console.error("Vote button element not found.");
+//     }
+//   } else {
+//     // console.log("Marker image found. No click action performed.");
+//   }
+// }
 
   
   // console.log(_0x73a467);
 setInterval(async function () {
   votingProcessAction();
   _0x3cdb96();
-  clickVoteButtonIfMarkerNotFound();
+  // clickVoteButtonIfMarkerNotFound();
 
 }, 1000);
   function _0x286fa6() {
