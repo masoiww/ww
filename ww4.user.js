@@ -1,6 +1,6 @@
 (async function () {
   "use strict";
-  window.alert("Script Bot play custom !!");
+  window.alert("Bot is running!");
   _0x286fa6();
   var _0x73a467 = "";
   let _0x2165f6 = localStorage.getItem("authtokens").toString();
