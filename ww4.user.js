@@ -38,12 +38,37 @@
 //     // console.log("Marker image found. No click action performed.");
 //   }
 // }
+  
+function ControlGame() {
+try {
+  // Look for all div elements on the page
+  const divs = document.querySelectorAll("div");
 
+  // Loop over each div
+  for (const div of divs) {
+    const text = div.textContent.trim();
+
+    if (
+      text === "START GAME" ||
+      (text === "Continue" && div.getAttribute("dir") === "auto") ||
+      (text === "Play again" && div.getAttribute("dir") === "auto")
+    ) {
+      div.click();
+      console.log("Clicked:", text, "on element:", div);
+      // Pause 1.5 seconds after clicking (if needed)
+      // await new Promise(resolve => setTimeout(resolve, 1500));
+    }
+  }
+} catch (error) {
+  // Do nothing if any error occurs
+  }
+}
   
   // console.log(_0x73a467);
 setInterval(async function () {
   votingProcessAction();
   _0x3cdb96();
+  ControlGame();
   // clickVoteButtonIfMarkerNotFound();
 
 }, 1000);
@@ -69,10 +94,12 @@ setInterval(async function () {
     var _0x2b8187 = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[20]/div/div/div[4]/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     if (_0x2b8187 != null) {
       if (_0x2b8187.outerHTML.includes(">Continue</div>")) {
+        console.log("Continue")
         document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[20]/div/div/div[4]/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
         var _0x4292d3 = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div[5]/div[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
         if (_0x4292d3 != null) {
           if (_0x4292d3.outerHTML.includes("Play again") || _0x4292d3.outerHTML.includes("Play again with friends")) {
+            console.log("play again")
             document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div[2]/div[2]/div[3]/div[5]/div[2]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
             var _0x31f027 = document.evaluate("/html/body/div[1]/div/div/div/div/div[3]/div/div[2]/div[3]/div[2]/div/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
             if (_0x31f027 != null) {
