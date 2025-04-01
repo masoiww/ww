@@ -51,10 +51,11 @@ try {
     if (
       text === "START GAME" ||
       (text === "Continue" && div.getAttribute("dir") === "auto") ||
-      (text === "Play again" && div.getAttribute("dir") === "auto")
+      (text === "Play again" && div.getAttribute("dir") === "auto") ||
+      (text === "OK" && div.getAttribute("dir") === "auto")
     ) {
       div.click();
-      console.log("Clicked:", text, "on element:", div);
+      // console.log("Clicked:", text, "on element:", div);
       // Pause 1.5 seconds after clicking (if needed)
       // await new Promise(resolve => setTimeout(resolve, 1500));
     }
@@ -869,6 +870,9 @@ setInterval(async function () {
   function votingProcessAction() {
     var myRole = getMyRole();
     var cplRoleList = getCplRoleList();
+    const chatSun = document.querySelector(
+    'img[src="/static/media/chat_sun.9e8344d03b9538e3222e.png"]');
+    // if (chatSun) {console.log("chat Sun Here")};
     // console.log(cplRoleList);
     var cplRole_1 = cplRoleList[0]
     var cplRole_2 = cplRoleList[3]
@@ -877,7 +881,7 @@ setInterval(async function () {
       // console.log("Here 1")
       if (cplRoleList.length == 3) {
         // console.log("Here 2")
-        if (myRole.includes("wolf")) {
+        if (myRole.includes("wolf") && !chatSun) {
           // console.log("Tao la Soi")
           var vote_YN = voteYN();
           // console.log("vote_YN " + vote_YN)
