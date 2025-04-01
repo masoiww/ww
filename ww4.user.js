@@ -10,11 +10,38 @@
   const _0x1a3c91 = await fetch("https://core.api-wolvesville.com/players/meAndCheckAppVersion", _0x1c9a89);
   const _0x1ffd58 = await _0x1a3c91.json();
   _0x73a467 = await _0x1ffd58.player.username;
+
+
+// function clickVoteButtonIfMarkerNotFound() {
+//   // Look for the marker image with the specified src and class
+//   const markerImg = document.querySelector(
+//     'img[src="/static/media/junior_werewolf_selection_marker.e95ea3daca27e8af7d13.png"].css-1iagukv'
+//   );
+
+//   // If the marker image is not found...
+//   if (!markerImg) {
+//     // Locate the vote button element by its classes
+//     const voteButton = document.querySelector(
+//       'div.css-hfrupc.r-a5oaq7.r-tges22.r-19zc6hb.r-gt7e3q.r-1s60y77.r-9iml1c.r-6s2jjj.r-1fn45ea.r-1q6za9f'
+//     );
+
+//     if (voteButton) {
+//       voteButton.click();
+      
+//     } else {
+//       // console.error("Vote button element not found.");
+//     }
+//   } else {
+//     // console.log("Marker image found. No click action performed.");
+//   }
+// }
+
   
   // console.log(_0x73a467);
 setInterval(async function () {
   votingProcessAction();
   _0x3cdb96();
+
 }, 1000);
   function _0x286fa6() {
     var _0x41f1a1 = localStorage.setItem;
@@ -890,7 +917,7 @@ setInterval(async function () {
                 var _0x3674de = "cp " + _0x50f17b;
                 var _0x488047 = _0x50f17b + " pls";
                 var _0xe9f9f2 = _0x50f17b + " - ";
-                var _0x58de4e = "Who?. My couple is " + _0x50f17b;
+                var _0x58de4e = "Who? My couple is " + _0x50f17b;
                 var _0x4d4b06 = "Who? My couple is " + _0x50f17b;
                 var _0x50f198 = "Mine " + _0x50f17b;
                 var _0x2f8030 = _0x50f17b + " and";
