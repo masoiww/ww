@@ -17,11 +17,16 @@ function clickVoteButtonIfMarkerNotFound() {
   const markerImg = document.querySelector(
     'img[src="/static/media/junior_werewolf_selection_marker.e95ea3daca27e8af7d13.png"].css-1iagukv'
   );
+  const jww = document.querySelector(
+    'img[src="/static/media/icon_junior_werewolf_filled.118d63fe2617f43b4fc7.svg"].css-1kfggsr'
+  );
 
   // If the marker image is not found...
-  if (!markerImg) {
+  if (!markerImg && jww) {
     // Locate the vote button element by its classes
-    const voteButton = document.querySelector('div.css-hfrupc.r-a5oaq7.r-tges22.r-19zc6hb.r-gt7e3q.r-1s60y77.r-9iml1c.r-6s2jjj.r-1fn45ea.r-1q6za9f');
+    const voteButton = document.querySelector(
+      'img[src="/static/media/vote_werewolves.9c7bf978b09b2b925d79.png"].css-1gvtegk'
+    );
 
     if (voteButton) {
       voteButton.click();
