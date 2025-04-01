@@ -10,7 +10,8 @@
   const _0x1a3c91 = await fetch("https://core.api-wolvesville.com/players/meAndCheckAppVersion", _0x1c9a89);
   const _0x1ffd58 = await _0x1a3c91.json();
   _0x73a467 = await _0x1ffd58.player.username;
-  console.log(_0x73a467);
+  
+  // console.log(_0x73a467);
 setInterval(async function () {
   votingProcessAction();
   _0x3cdb96();
@@ -20,7 +21,7 @@ setInterval(async function () {
     localStorage.setItem = function (_0x3ac1d2, _0xe48682) {
       if (_0x3ac1d2 == "open-page") {
         localStorage.removeItem(_0x3ac1d2);
-        console.log("Tried to detect multi window, blocked");
+        // console.log("Tried to detect multi window, blocked");
         return;
       }
       _0x41f1a1.apply(this, arguments);
@@ -31,7 +32,7 @@ setInterval(async function () {
     if (_0x1f08ae != null) {
       if (_0x1f08ae.outerHTML.includes(">START GAME<")) {
         document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div[4]/div[2]/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-        console.log("Bot started the game!");
+        // console.log("Bot started the game!");
       }
     }
     var _0x2b8187 = document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[20]/div/div/div[4]/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -46,7 +47,7 @@ setInterval(async function () {
             if (_0x31f027 != null) {
               document.evaluate("/html/body/div[1]/div/div/div/div/div[3]/div/div[2]/div[3]/div[2]/div/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
             }
-            console.log("Bot backed the game!");
+            // console.log("Bot backed the game!");
           }
         }
       }
@@ -63,7 +64,7 @@ setInterval(async function () {
             if (_0x1b9cff != null) {
               document.evaluate("/html/body/div[1]/div/div/div/div/div[3]/div/div[2]/div[3]/div[2]/div/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
             }
-            console.log("Bot backed the game!");
+            // console.log("Bot backed the game!");
           }
         }
       }
@@ -74,17 +75,17 @@ setInterval(async function () {
   //   var _0x21baf8 = document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   //   if (_0x21baf8 != null) {
   //     document.evaluate(_0x7e18c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-  //     console.log("Bot voted!");
+  //     // console.log("Bot voted!");
   //   }
   // }
   function BotVote(row_index, column_index) {
     
-    // Check if any element with text containing "Voting" exists
-  var votingElement = document.evaluate("//div[contains(text(), 'Voting')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  if (votingElement) {
-    console.log("Voting in progress. Aborting BotVote.");
-    return;
-  }
+  //   // Check if any element with text containing "Voting" exists
+  // var votingElement = document.evaluate("//div[contains(text(), 'Voting')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  // if (votingElement) {
+  //   // console.log("Voting in progress. Aborting BotVote.");
+  //   return;
+  // }
     
   var xpath = "//*[@id='root']/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" 
               + row_index + "]/div[" + column_index + "]/div/div[1]/div/div[6]";
@@ -92,7 +93,7 @@ setInterval(async function () {
   var node = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   if (node !== null) {
     node.click();
-    console.log("Bot voted at " + row_index + column_index);
+    // console.log("Bot voted at " + row_index + column_index);
   }
 };
 
@@ -108,19 +109,19 @@ setInterval(async function () {
           var _0x3258df = document.evaluate(_0x1aec64, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
           if (_0x3258df != null) {
             document.evaluate(_0x1aec64, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-            console.log("Bot killed!");
+            // console.log("Bot killed!");
           }
           var _0x56b0b4 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x5dc39e + "]/div[" + _0x5be14c + "]/div/div[4]/div[1]/div/div";
           var _0x12a450 = document.evaluate(_0x56b0b4, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
           if (_0x12a450 != null) {
             document.evaluate(_0x56b0b4, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-            console.log("Bot killed!");
+            // console.log("Bot killed!");
           }
           var _0x2079c1 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x5dc39e + "]/div[" + _0x5be14c + "]/div/div[6]/div[1]/div/div";
           var _0x252c29 = document.evaluate(_0x2079c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
           if (_0x252c29 != null) {
             document.evaluate(_0x2079c1, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-            console.log("Bot killed!");
+            // console.log("Bot killed!");
           }
         }
       }
@@ -180,13 +181,13 @@ setInterval(async function () {
           var _0x209030 = document.evaluate(_0x42699a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
           if (_0x209030 != null) {
             document.evaluate(_0x42699a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-            console.log("Bot tagged!");
+            // console.log("Bot tagged!");
           }
           var _0x133a3a = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x30af29 + "]/div[" + _0x3a59e1 + "]/div/div[4]/div[1]/div/div";
           var _0x3059db = document.evaluate(_0x133a3a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
           if (_0x3059db != null) {
             document.evaluate(_0x133a3a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-            console.log("Bot tagged!");
+            // console.log("Bot tagged!");
           }
         }
       }
@@ -367,7 +368,7 @@ setInterval(async function () {
       }
     }
     if (_0x3a1370 != null) {
-      console.log("Bot checked my role is: " + _0x3a1370 + "!");
+      // console.log("Bot checked my role is: " + _0x3a1370 + "!");
     }
     return _0x3a1370;
   }
@@ -698,7 +699,7 @@ setInterval(async function () {
       }
     }
     if (_0x3ab079.length > 0) {
-      console.log("Bot checked my couple role is " + _0x3ab079[0] + " and " + _0x3ab079[3] + "!");
+      // console.log("Bot checked my couple role is " + _0x3ab079[0] + " and " + _0x3ab079[3] + "!");
     }
     return _0x3ab079;
   }
@@ -710,7 +711,7 @@ setInterval(async function () {
       _0x512895.innerHTML = _0x5b7057;
       _0x512895.dispatchEvent(_0x1172c8);
       document.evaluate("/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[1]/div[3]/div/div[2]/div/div[2]/div/div/div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
-      console.log("Bot chatted : " + _0x5b7057);
+      // console.log("Bot chatted : " + _0x5b7057);
     }
   }
   function _0x3d4f64(_0x3d0ef0, _0x586e80) {
@@ -783,7 +784,7 @@ setInterval(async function () {
               _0x1e528e = "yes";
             }
           }
-          console.log(_0x1e528e);
+          // console.log(_0x1e528e);
         }
       }
     }
@@ -792,28 +793,31 @@ setInterval(async function () {
   function votingProcessAction() {
     var myRole = getMyRole();
     var cplRoleList = getCplRoleList();
-    console.log("myRole is " + myRole + " , " + "cplRoleList length is " + cplRoleList.length)
+    // console.log(cplRoleList);
+    var cplRole_1 = cplRoleList[0]
+    var cplRole_2 = cplRoleList[3]
+    // console.log("myRole is " + myRole + " , " + "cplRoleList length is " + cplRoleList.length)
     if (myRole != null && cplRoleList.length > 0) {
-      console.log("Here 1")
+      // console.log("Here 1")
       if (cplRoleList.length == 3) {
-        console.log("Here 2")
+        // console.log("Here 2")
         if (myRole.includes("wolf")) {
-          console.log("Tao la Soi")
+          // console.log("Tao la Soi")
           var vote_YN = voteYN();
-          console.log("vote_YN " + vote_YN)
+          // console.log("vote_YN " + vote_YN)
           if (vote_YN != "yes") {
-            console.log("Run Voting Function Here")
+            // console.log("Run Voting Function Here")
             BotVote(cplRoleList[1], cplRoleList[2]);
           }
         }
       }
-      if (cplRoleList.length == 6) {
+      if (cplRoleList.length > 1 && cplRoleList.length < 4) {
         if (cplRoleList[0].includes("wolf")) {
           var _0x54e000 = voteYN();
           if (_0x54e000 != "yes") {
             BotVote(cplRoleList[1], cplRoleList[2]);
           }
-        } else if (cplRoleList[3].includes("wolf")) {
+        } else if (cplRoleList.length >= 4 && cplRoleList[3].includes("wolf")) {
           var _0x5ebff2 = voteYN();
           if (_0x5ebff2 != "yes") {
             BotVote(cplRoleList[4], cplRoleList[5]);
