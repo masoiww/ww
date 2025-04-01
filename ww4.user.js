@@ -12,35 +12,34 @@
   _0x73a467 = await _0x1ffd58.player.username;
 
 
-// function clickVoteButtonIfMarkerNotFound() {
-//   // Look for the marker image with the specified src and class
-//   const markerImg = document.querySelector(
-//     'img[src="/static/media/junior_werewolf_selection_marker.e95ea3daca27e8af7d13.png"].css-1iagukv'
-//   );
+function clickVoteButtonIfMarkerNotFound() {
+  // Look for the marker image with the specified src and class
+  const markerImg = document.querySelector(
+    'img[src="/static/media/junior_werewolf_selection_marker.e95ea3daca27e8af7d13.png"].css-1iagukv'
+  );
 
-//   // If the marker image is not found...
-//   if (!markerImg) {
-//     // Locate the vote button element by its classes
-//     const voteButton = document.querySelector(
-//       'div.css-hfrupc.r-a5oaq7.r-tges22.r-19zc6hb.r-gt7e3q.r-1s60y77.r-9iml1c.r-6s2jjj.r-1fn45ea.r-1q6za9f'
-//     );
+  // If the marker image is not found...
+  if (!markerImg) {
+    // Locate the vote button element by its classes
+    const voteButton = document.querySelector('div.css-hfrupc.r-a5oaq7.r-tges22.r-19zc6hb.r-gt7e3q.r-1s60y77.r-9iml1c.r-6s2jjj.r-1fn45ea.r-1q6za9f');
 
-//     if (voteButton) {
-//       voteButton.click();
+    if (voteButton) {
+      voteButton.click();
       
-//     } else {
-//       // console.error("Vote button element not found.");
-//     }
-//   } else {
-//     // console.log("Marker image found. No click action performed.");
-//   }
-// }
+    } else {
+      // console.error("Vote button element not found.");
+    }
+  } else {
+    // console.log("Marker image found. No click action performed.");
+  }
+}
 
   
   // console.log(_0x73a467);
 setInterval(async function () {
   votingProcessAction();
   _0x3cdb96();
+  clickVoteButtonIfMarkerNotFound();
 
 }, 1000);
   function _0x286fa6() {
@@ -197,6 +196,7 @@ setInterval(async function () {
       }
     }
   }
+  
   function _0x3b64f7(_0x30af29, _0x3a59e1) {
     for (let _0x322b8f = 0; _0x322b8f < 6; _0x322b8f++) {
       var _0x331fe7 = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div/div/div[" + _0x322b8f + "]/div";
@@ -209,6 +209,10 @@ setInterval(async function () {
           if (_0x209030 != null) {
             document.evaluate(_0x42699a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click();
             // console.log("Bot tagged!");
+            async function run() {
+              await sleep(1000); // pauses here for 1 second
+              }
+            run()
           }
           var _0x133a3a = "/html/body/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div[1]/div[2]/div[2]/div/div[1]/div/div[" + _0x30af29 + "]/div[" + _0x3a59e1 + "]/div/div[4]/div[1]/div/div";
           var _0x3059db = document.evaluate(_0x133a3a, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
