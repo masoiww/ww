@@ -92,7 +92,7 @@ async function ControlGame() {
 
           // Wait for 1 second after clicking "Play again"
           await new Promise((resolve) => setTimeout(resolve, 1500));
-          console.log('Play again - Wait 1.5s here')
+          // console.log('Play again - Wait 1.5s here')
 
           // Look for "OK" and click it
           const okDiv = Array.from(document.querySelectorAll("div")).find(
@@ -102,7 +102,7 @@ async function ControlGame() {
           if (okDiv) {
             okDiv.click();
             await new Promise((resolve) => setTimeout(resolve, 1500));
-            console.log('OK - Wait 1.5s here')
+            // console.log('OK - Wait 1.5s here')
           }
         }
       }
