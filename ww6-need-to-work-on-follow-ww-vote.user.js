@@ -10,35 +10,64 @@
   const _0x1a3c91 = await fetch("https://core.api-wolvesville.com/players/meAndCheckAppVersion", _0x1c9a89);
   const _0x1ffd58 = await _0x1a3c91.json();
   _0x73a467 = await _0x1ffd58.player.username;
-  let tagged = false; // flag to track if tagging has occurred
+  
+  // let tagged = false; // flag to track if tagging has occurred
+  let follow_jww_vote = false;
 
 
-// function clickVoteButtonIfMarkerNotFound() {
-//   // Look for the marker image with the specified src and class
-//   const markerImg = document.querySelector(
-//     'img[src="/static/media/junior_werewolf_selection_marker.e95ea3daca27e8af7d13.png"].css-1iagukv'
-//   );
-//   const jww = document.querySelector(
-//     'img[src="/static/media/icon_junior_werewolf_filled.118d63fe2617f43b4fc7.svg"].css-1kfggsr'
-//   );
+function followWWvote() {
+  const jww_tag_icon = document.querySelector(
+    'img[src="/static/media/junior_werewolf_selection_marker.e95ea3daca27e8af7d13.png"]'
+  );  
+  const jww = document.querySelector(
+    'img[src="/static/media/icon_junior_werewolf_filled.118d63fe2617f43b4fc7.svg"]'
+  );
+  
+  // const jww_vote = document.querySelector('img[src="/static/media/vote_werewolves.9c7bf978b09b2b925d79.png"]');
+  // if (jww_vote) {console.log("jww_vote found")}
+  // Select the image that does not have the "selected" version (using its class)
+  // const uncoloredVoteImage = document.querySelector(
+  //   'img.css-1gvtegk[src="/static/media/vote_werewolves.9c7bf978b09b2b925d79.png"]'
+  // );
+  
+  if (jww && !jww_tag_icon) {  
+    // Locate all elements with `opacity: 1` in their styles
+const jwwVoteElements = document.querySelectorAll('[style*="opacity: 1"]');
 
-//   // If the marker image is not found...
-//   if (!markerImg && jww) {
-//     // Locate the vote button element by its classes
-//     const voteButton = document.querySelector(
-//       'img[src="/static/media/vote_werewolves.9c7bf978b09b2b925d79.png"].css-1gvtegk'
-//     );
+let targetElement = null;
 
-//     if (voteButton) {
-//       voteButton.click();
-      
-//     } else {
-//       // console.error("Vote button element not found.");
-//     }
-//   } else {
-//     // console.log("Marker image found. No click action performed.");
-//   }
-// }
+// Loop through elements to find the correct "jww vote" element
+jwwVoteElements.forEach((element) => {
+  if (
+    element.innerHTML.includes('/static/media/vote_werewolves') // Unique content check
+  ) {
+    targetElement = element;
+  }
+});
+
+// If the correct "jww vote" element is found
+if (targetElement && !follow_jww_vote) {
+  // Get the bounding rectangle of the element
+  const rect = targetElement.getBoundingClientRect();
+
+  // Calculate the position to click (next to the right of the element)
+  const clickX = rect.right + 10; // 10 pixels to the right
+  const clickY = rect.top + (rect.height / 2); // Middle of the element's height
+
+  // Simulate a click at the calculated position
+  const clickEvent = new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+    clientX: clickX,
+    clientY: clickY,
+  });
+
+  document.elementFromPoint(clickX, clickY)?.dispatchEvent(clickEvent);
+  follow_jww_vote = true;
+    } 
+  }
+}
+  
   
 async function ControlGame() {
     try {
@@ -63,7 +92,8 @@ async function ControlGame() {
           jww_tag = false;
 
           // Wait for 1 second after clicking "Play again"
-          await new Promise((resolve) => setTimeout(resolve, 1000));
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+          console.log('Wait 1.5s here')
 
           // Look for "OK" and click it
           const okDiv = Array.from(document.querySelectorAll("div")).find(
@@ -72,6 +102,8 @@ async function ControlGame() {
 
           if (okDiv) {
             okDiv.click();
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+            console.log('Wait 1.5s here')
           }
         }
       }
@@ -83,12 +115,11 @@ async function ControlGame() {
   
   // console.log(_0x73a467);
 setInterval(async function () {
+  async ControlGame();
   votingProcessAction();
-  _0x3cdb96();
-  ControlGame();
-  // clickVoteButtonIfMarkerNotFound();
-
+  // _0x3cdb96(); 
 }, 1000);
+  
   function _0x286fa6() {
     var _0x41f1a1 = localStorage.setItem;
     localStorage.setItem = function (_0x3ac1d2, _0xe48682) {
