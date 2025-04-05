@@ -1289,4 +1289,5 @@ async function ControlGame() {
     followWWvote();
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
+})();
 }());
