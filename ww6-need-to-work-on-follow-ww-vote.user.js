@@ -117,6 +117,7 @@ async function ControlGame() {
 setInterval(async function () {
   async ControlGame();
   votingProcessAction();
+  followWWvote();
   // _0x3cdb96(); 
 }, 1000);
   
