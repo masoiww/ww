@@ -79,21 +79,21 @@ async function ControlGame() {
         const text = div.textContent.trim();
 
         if (
-          text === "START GAME" ||
+          (text === "START GAME" && div.getAttribute("dir") === "auto")||
           (text === "Continue" && div.getAttribute("dir") === "auto")
         ) {
           div.click();
-          jww_tag = false;
+          // jww_tag = false;
         } else if (
           text === "Play again" &&
           div.getAttribute("dir") === "auto"
         ) {
           div.click();
-          jww_tag = false;
+          // jww_tag = false;
 
           // Wait for 1 second after clicking "Play again"
           await new Promise((resolve) => setTimeout(resolve, 1500));
-          console.log('Wait 1.5s here')
+          console.log('Play again - Wait 1.5s here')
 
           // Look for "OK" and click it
           const okDiv = Array.from(document.querySelectorAll("div")).find(
@@ -103,7 +103,7 @@ async function ControlGame() {
           if (okDiv) {
             okDiv.click();
             await new Promise((resolve) => setTimeout(resolve, 1500));
-            console.log('Wait 1.5s here')
+            console.log('OK - Wait 1.5s here')
           }
         }
       }
@@ -111,15 +111,6 @@ async function ControlGame() {
       // Do nothing if any error occurs
     }
   }
-
-  
-  // console.log(_0x73a467);
-setInterval(async function () {
-  async ControlGame();
-  votingProcessAction();
-  followWWvote();
-  // _0x3cdb96(); 
-}, 1000);
   
   function _0x286fa6() {
     var _0x41f1a1 = localStorage.setItem;
@@ -1295,4 +1286,13 @@ setInterval(async function () {
       }
     }
   }
+
+  (async function mainLoop() {
+  while (true) {
+    await ControlGame();
+    votingProcessAction();
+    followWWvote();
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  }
+})();
 }());
