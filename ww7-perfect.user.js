@@ -11,6 +11,8 @@
   const _0x1ffd58 = await _0x1a3c91.json();
   _0x73a467 = await _0x1ffd58.player.username;
 
+  let follow_jww_vote = false;
+
 
 function followWWvote() {
   const jww_tag_icon = document.querySelector(
