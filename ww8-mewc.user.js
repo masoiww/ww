@@ -32,7 +32,7 @@ function followWWvote() {
   if (jww && !jww_tag_icon) {  
     // Locate all elements with `opacity: 1` in their styles
 const jwwVoteElements = document.querySelectorAll('[style*="opacity: 1"]');
-
+console.log("jwwVoteElements: " + jwwVoteElements)
 let targetElement = null;
 
 // Loop through elements to find the correct "jww vote" element
@@ -43,7 +43,7 @@ jwwVoteElements.forEach((element) => {
     targetElement = element;
   }
 });
-
+console.log("targetElement: " + targetElement)
 // If the correct "jww vote" element is found
 if (targetElement && !follow_jww_vote) {
   // Get the bounding rectangle of the element
@@ -62,6 +62,7 @@ if (targetElement && !follow_jww_vote) {
   });
 
   document.elementFromPoint(clickX, clickY)?.dispatchEvent(clickEvent);
+  console.log("follow_jww_vote: " + follow_jww_vote)
   follow_jww_vote = true;
     } 
   }
@@ -111,11 +112,11 @@ async function ControlGame() {
     }
   }
   
-function chat_me() {
+async function chat_me() {
   // Check if the chat "sun" image exists
   const chatSun = document.querySelector('img[src="/static/media/chat_sun.9e8344d03b9538e3222e.png"]');
   if (!chatSun) {
-    console.error("chatSun image not found!");
+    // console.error("chatSun image not found!");
     return;
   }
 
@@ -138,7 +139,7 @@ function chat_me() {
   }
   
   // Set the textarea value to "me" and notify any listeners.
-  textarea.value = "me";
+  textarea.value = "m";
   textarea.dispatchEvent(new Event('input', { bubbles: true }));
 
   // Create and dispatch a KeyboardEvent for "Enter"
@@ -154,8 +155,97 @@ function chat_me() {
 }
 
 
+// async function chat_me() {
+
+//   // Check if the chat "sun" image exists
+//   const chatSun = document.querySelector('img[src="/static/media/chat_sun.9e8344d03b9538e3222e.png"]');
+//   if (!chatSun) {
+//     // console.error("chatSun image not found!");
+//     return;
+//   }
+  
+//   // Target the textarea using a CSS attribute selector
+//   const textarea = document.querySelector('textarea[placeholder="Type your message"]');
+//   if (!textarea) {
+//     console.error("Textarea element not found!");
+//     return;
+//   }
+  
+//   // Focus the textarea (simulate user clicking into it)
+//   textarea.focus();
+  
+//   // Use the native setter to update the value so frameworks (e.g., React) notice the change.
+//   const nativeTextAreaValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
+//   nativeTextAreaValueSetter.call(textarea, "m");
+  
+//   // Dispatch an input event so that any listeners or the framework update accordingly.
+//   const inputEvent = new Event('input', { bubbles: true });
+//   textarea.dispatchEvent(inputEvent);
+  
+//   // Optionally dispatch a change event
+//   const changeEvent = new Event('change', { bubbles: true });
+//   textarea.dispatchEvent(changeEvent);
+  
+//   // Wait briefly for the UI to update internal state and enable the send button
+//   await new Promise(resolve => setTimeout(resolve, 500));
+  
+//   // If the send button is wrapped in a container with an aria-disabled attribute, force-enable it.
+//   const sendButtonContainer = document.querySelector('div[aria-disabled]');
+//   if (sendButtonContainer && sendButtonContainer.getAttribute("aria-disabled") === "true") {
+//     sendButtonContainer.removeAttribute("aria-disabled");
+//   }
+  
+//   // Wait a bit more for the UI update
+//   await new Promise(resolve => setTimeout(resolve, 200));
+  
+//   // Locate the send button using its CSS selector (based on its src attribute)
+//   const sendButton = document.querySelector('img[src="/static/media/icon_send.a0047393c372b8a650e9.png"]');
+//   if (sendButton) {
+//     sendButton.click();
+//     console.log("Send button clicked! Message 'me' sent.");
+//   } else {
+//     console.error("Send button element not found!");
+//   }
+// }
+
+//   async function chat_me() {
+//   // Check if the chat UI is active by verifying the chatSun image is present.
+//   const chatSun = document.querySelector('img[src="/static/media/chat_sun.9e8344d03b9538e3222e.png"]');
+//   if (!chatSun) {
+//     // console.error("chatSun image not found!");
+//     return;
+//   }
+  
+//   // Prevent sending the same message more than once.
+//   let message_sent = false 
+  
+//   // Ensure SOCKET is available.
+//   if (typeof SOCKET === "undefined") {
+//     console.error("SOCKET is undefined!");
+//     return;
+//   }
+
+//     if (!message_sent) {
+//   // Send the message via SOCKET using your game's protocol.
+//   const messagePayload = JSON.stringify({ msg: "me" });
+//   SOCKET.emit("game:chat-public:msg", messagePayload);
+//   console.log("Socket message sent: 'me'");
+//   message_sent = true
+//   }
+// }
+
+
+
+
+
+
 function me_wc() {
+  const chatSun = document.querySelector('img[src="/static/media/chat_sun.9e8344d03b9538e3222e.png"]');
   // Get all chat message elements (adjust the selector as needed)
+  if (!chatSun) {
+    return;
+  }
+  
   const searchTerms = ['me', 'wc', 'Me', 'Wc', 'ME', 'WC'];
   const divs = document.querySelectorAll('div.css-z4shqq');
 
@@ -179,11 +269,9 @@ function me_wc() {
   }
 
   var myRole = getMyRole();
-  const chatSun = document.querySelector('img[src="/static/media/chat_sun.9e8344d03b9538e3222e.png"]');
-  // Uncomment for debugging: console.log("chat Sun Here", chatSun);
 
   // Proceed only if myRole includes "wolf", chatSun exists, and we got a valid number.
-  if (myRole.includes("wolf") && chatSun && !isNaN(extractedNumber)) {
+  if (myRole && myRole.includes("wolf") && chatSun && !isNaN(extractedNumber)) {
     // Calculate row and column (4 columns per row)
     const row_index = Math.ceil(extractedNumber / 4);
     const column_index = ((extractedNumber - 1) % 4) + 1;
@@ -1373,7 +1461,7 @@ function me_wc() {
     await ControlGame();
     votingProcessAction();
     followWWvote();
-    chat_me();
+    await chat_me();
     me_wc();
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
